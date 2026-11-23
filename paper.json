@@ -1,0 +1,66 @@
+{
+  "files": {
+    "pdf": {
+      "bytes": 79328,
+      "matches_public": true,
+      "path": "paper.pdf",
+      "public_sha256": "ae7724784f5089351084e8c0eae0df725ddc7aaf1800013c1bbea24e96bd3c46",
+      "sha256": "ae7724784f5089351084e8c0eae0df725ddc7aaf1800013c1bbea24e96bd3c46"
+    },
+    "source": {
+      "bytes": 14255,
+      "matches_public": true,
+      "path": "source.archive",
+      "public_sha256": "bc07ea8513a6be24faf718b77f875eef02388e42b918680330c726c50bc13427",
+      "sha256": "bc07ea8513a6be24faf718b77f875eef02388e42b918680330c726c50bc13427"
+    }
+  },
+  "source_identity": "Mathesis public projection",
+  "work": {
+    "abstract_text": "For Chai Wah Wu's Conjectures 1–4 in OEIS A227244, revision 54, FORMULA (10 July 2026), we extend the bounds proved by Schott (23 October 2019) and Wu (10 July 2026) to exact least-prime-factor formulas, including all excluded classes. The values are 101 on 20n+16, 47 on 220n+8, and 149 on 72n+32 outside n≡2 (mod 5) and n≡18 (mod 55), where they are 101 and 47, respectively. On 168n+43 the value is 59 except at n≡26 (mod 55), where it is 47. A periodicity lemma and finite modular tables prove these formulas. We also characterize all indices with value 11 and extend Fried's (2025) Fermat-number counterexample to an exact criterion for Cloitre's totient condition.",
+    "authors": [
+      {
+        "affiliation": "ChronoAI Pte Ltd, Singapore",
+        "name": "Haobo Ma"
+      },
+      {
+        "affiliation": "National University of Singapore; ChronoAI Pte Ltd, Singapore",
+        "name": "Wenlin Zhang"
+      }
+    ],
+    "concept_doi": "10.5281/zenodo.24410621",
+    "current_version": 3,
+    "doi": "10.5281/zenodo.24410622",
+    "lean_source": {
+      "revision": "ec1e94b3ab1ae33ea4f94d5484df26d748e2175e",
+      "url": "https://github.com/the-omega-institute/trureturing/blob/ec1e94b3ab1ae33ea4f94d5484df26d748e2175e/D5/S3/Arith/Primes/WuA227244ConjectureThree.lean"
+    },
+    "license": "CC-BY-4.0",
+    "msc": [],
+    "pdf": {
+      "bytes": 79328,
+      "sha256": "ae7724784f5089351084e8c0eae0df725ddc7aaf1800013c1bbea24e96bd3c46",
+      "url": "/api/v1/collected-papers/wu-a227244-progressions/files/pdf?version=3"
+    },
+    "previous_version": null,
+    "publication": "public",
+    "published_on": "2026-11-23T05:38:11.493333296Z",
+    "record": "wu-a227244-progressions",
+    "repository_name": "10.5281-zenodo.24410621",
+    "source": {
+      "bytes": 14255,
+      "sha256": "bc07ea8513a6be24faf718b77f875eef02388e42b918680330c726c50bc13427",
+      "url": "/api/v1/collected-papers/wu-a227244-progressions/files/source?version=3"
+    },
+    "title": "Exact least prime factors and exceptional classes for Wu's conjectures on (2^{2^n}+1)2^{2^{2^n}}-1",
+    "versions": [
+      {
+        "previous_version": null,
+        "published_on": "2026-11-23T05:38:11.493333296Z",
+        "revision": "3",
+        "version": 3
+      }
+    ],
+    "work": "wu-a227244-progressions"
+  }
+}

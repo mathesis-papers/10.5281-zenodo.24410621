@@ -1,0 +1,26 @@
+{
+  "id": "wu-a227244-progressions",
+  "revision": 3,
+  "problem_ids": [
+    "wu-a227244-conjecture-three",
+    "oeis-a227244-c1-equality",
+    "oeis-a227244-c2-equality",
+    "wu-a227244-conjecture-four"
+  ],
+  "topic": "Wu's four least-prime-factor progressions, their exceptional classes, and Fermat-number consequences",
+  "title": "Exact least prime factors and exceptional classes for Wu's conjectures on (2^{2^n}+1)2^{2^{2^n}}-1",
+  "creators": [
+    {
+      "name": "Ma, Haobo",
+      "affiliation": "ChronoAI Pte Ltd, Singapore"
+    },
+    {
+      "name": "Zhang, Wenlin",
+      "affiliation": "National University of Singapore; ChronoAI Pte Ltd, Singapore"
+    }
+  ],
+  "abstract": "For Chai Wah Wu's Conjectures 1–4 in OEIS A227244, revision 54, FORMULA (10 July 2026), we extend the bounds proved by Schott (23 October 2019) and Wu (10 July 2026) to exact least-prime-factor formulas, including all excluded classes. The values are 101 on 20n+16, 47 on 220n+8, and 149 on 72n+32 outside n≡2 (mod 5) and n≡18 (mod 55), where they are 101 and 47, respectively. On 168n+43 the value is 59 except at n≡26 (mod 55), where it is 47. A periodicity lemma and finite modular tables prove these formulas. We also characterize all indices with value 11 and extend Fried's (2025) Fermat-number counterexample to an exact criterion for Cloitre's totient condition.",
+  "summary": "Complete exceptional-class formulas for Wu's four progressions, reproofs and extensions of the Schott–Wu bounds, and a strengthening of Fried's Fermat-number totient counterexample: φ(F_j−2)=(F_j−1)/2 exactly for j≤5.",
+  "license": "cc-by-4.0",
+  "evidence_url": "https://github.com/the-omega-institute/trureturing/blob/ec1e94b3ab1ae33ea4f94d5484df26d748e2175e/D5/S3/Arith/Primes/WuA227244ConjectureThree.lean"
+}

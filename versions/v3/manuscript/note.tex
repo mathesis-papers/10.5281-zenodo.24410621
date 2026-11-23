@@ -1,0 +1,353 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=25mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,booktabs,array}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{xurl}
+\usepackage[colorlinks=true,urlcolor=blue,citecolor=blue,linkcolor=blue]{hyperref}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+\newcommand{\N}{\mathbb{N}_0}
+\newcommand{\lpf}{\operatorname{lpf}}
+\title{Exact least prime factors and exceptional classes for Wu's conjectures on\protect\\
+$(2^{2^n}+1)2^{2^{2^n}}-1$}
+\author{Haobo Ma\\\small ChronoAI Pte Ltd, Singapore
+\and Wenlin Zhang\\\small National University of Singapore\\\small ChronoAI Pte Ltd, Singapore}
+\date{13 November 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+For Chai Wah Wu's Conjectures 1--4 in OEIS A227244, revision 54, FORMULA
+(10 July 2026), we extend the bounds proved by Schott (23 October 2019)
+and Wu (10 July 2026)~\cite{oeis} to exact least-prime-factor formulas,
+including all excluded classes.
+The values are 101 on $20n+16$, 47 on $220n+8$, and 149 on $72n+32$
+outside $n\equiv2\pmod5$ and $n\equiv18\pmod{55}$, where they are 101
+and 47, respectively. On $168n+43$ the value is 59 except at
+$n\equiv26\pmod{55}$, where it is 47.
+A periodicity lemma and finite modular tables prove these formulas.
+We also characterize all indices with value 11 and extend Fried's (2025)
+Fermat-number counterexample to an exact criterion for Cloitre's totient
+condition~\cite{fried}.
+\end{abstract}
+
+\section{Statements and the noncoverage condition}
+For $m\in\N$, put
+\[
+ G_m=(2^{2^m}+1)\,2^{2^{2^m}}-1,
+ \qquad a(m)=\lpf(G_m),
+\]
+where $\lpf$ denotes the least prime divisor of an integer greater than one.
+Since $G_0=11$ and $G_m\geq 11$, this is defined for every $m$.
+Wu's four conjectures concern the values of this sequence along arithmetic
+progressions~\cite{oeis}. The issue is minimality, rather than divisibility
+alone: the same integer can have several small prime divisors.
+Schott's recorded proof excludes the primes below 11; Wu's proofs give
+$a(4n+5)=11$ and $a(20n+16)\leq101$. The equalities below add the
+remaining smaller-prime exclusions and specify the omitted classes.
+
+\begin{theorem}\label{thm:main}
+For every $n\in\N$,
+\begin{align}
+ a(20n+16)&=101,\label{eq:c1}\\
+ a(220n+8)&=47,\label{eq:c2}\\
+ a(72n+32)&=
+ \begin{cases}
+ 101,&n\equiv2\pmod5,\\
+ 47,&n\equiv18\pmod{55},\\
+ 149,&n\not\equiv2\pmod5\text{ and }n\not\equiv18\pmod{55},
+ \end{cases}\label{eq:c3}\\
+ a(168n+43)&=
+ \begin{cases}
+ 47,&n\equiv26\pmod{55},\\
+ 59,&n\not\equiv26\pmod{55}.
+ \end{cases}\label{eq:c4}
+\end{align}
+The two exceptional cases in~\eqref{eq:c3} are disjoint.
+\end{theorem}
+
+We read Conjecture 3's noncoverage clause as exclusion of the index from
+the first two progressions. This condition is essential. Indeed,
+\begin{align*}
+ 72n+32\in\{20k+16:k\in\N\}&\iff n\equiv2\pmod5,\\
+ 72n+32\in\{220k+8:k\in\N\}&\iff n\equiv18\pmod{55}.
+\end{align*}
+To check the forward implications, reduce the two equations modulo 20 and 220,
+respectively: $12n\equiv4\pmod{20}$ and $72n\equiv196\pmod{220}$.
+For the converses, $n=5h+2$ gives $k=18h+8$, while $n=55h+18$ gives $k=18h+6$.
+These are nonnegative integers. The two conditions cannot coincide because
+$18\equiv3\pmod5$.
+The unconditional equality, which is not asserted in the source, fails:
+$n=2$ gives $a(176)=101$, and $n=18$ gives $a(1328)=47$.
+Theorem~\ref{thm:main} proves the conjectured assertion on the specified
+remaining indices and determines both excluded sets.
+
+\section{A finite reduction for the nested powers}
+The following elementary lemma supplies the all-index reduction; modular
+arithmetic never requires constructing $G_m$.
+
+\begin{lemma}\label{lem:reduction}
+Let $q$ be an odd prime and $d=q-1$. Let $s,t,p,L$ be positive integers
+satisfying
+\begin{align}
+ 2^d&\equiv1\pmod q,&
+ 2^{2p}&\equiv2^p\pmod d,\label{eq:period1}\\
+ 2^{sL+t}&\equiv2^t\pmod d,&
+ 2^{sL+t}&\equiv2^t\pmod p,&p&\leq2^t.\label{eq:period2}
+\end{align}
+For $0\leq r<L$, define
+\begin{equation}\label{eq:residue}
+ R_{q,s,t}(r)=
+ \left(2^{\,2^{sr+t}\bmod d}+1\right)
+ 2^{\,2^{\,p+(2^{sr+t}\bmod p)}\bmod d}-1\pmod q.
+\end{equation}
+Then $G_{sn+t}\equiv R_{q,s,t}(n\bmod L)\pmod q$ for all $n\in\N$.
+\end{lemma}
+
+\begin{proof}
+If $2^{sL+t}\equiv2^t\pmod M$, multiplication by $2^{sk}$ shows that
+$2^{s(k+L)+t}\equiv2^{sk+t}\pmod M$ for every $k\geq0$.
+Consequently $2^{sn+t}\equiv2^{sr+t}$ modulo both $d$ and $p$, where
+$r=n\bmod L$.
+Similarly, the second congruence in~\eqref{eq:period1}, multiplied by $2^k$,
+shows that $2^{k+2p}\equiv2^{k+p}\pmod d$ for all $k\geq0$.
+Thus, for $e\geq p$,
+\[
+ 2^e\equiv2^{p+(e\bmod p)}\pmod d.
+\]
+Take $m=sn+t$ and $e=2^m\geq2^t\geq p$. It follows that
+\[
+ 2^{2^m}\equiv2^{p+(2^{sr+t}\bmod p)}\pmod d.
+\]
+Finally $2^d\equiv1\pmod q$ permits reduction modulo $d$ of both exponents
+in $(2^{2^m}+1)2^{2^{2^m}}-1$.
+The first exponent reduces to $2^{sr+t}\bmod d$; the second reduces to
+$2^{p+(2^{sr+t}\bmod p)}\bmod d$. This is~\eqref{eq:residue}.
+\end{proof}
+
+\subsection*{The modular tables}
+Table~\ref{tab:parameters} gives $p$ and $L_j$ for each required odd prime,
+with $d=q-1$ and
+\[
+ (s_1,t_1)=(20,16),\quad(s_2,t_2)=(220,8),\quad
+ (s_3,t_3)=(72,32),\quad(s_4,t_4)=(168,43).
+\]
+For every populated column, direct modular exponentiation verifies all the
+premises of Lemma~\ref{lem:reduction}. The zero sets of~\eqref{eq:residue}
+are exactly those in Table~\ref{tab:zeros}; every other populated row has
+empty zero set. Primes above the indicated column's target are not needed.
+The supplied Python program \texttt{verify.py} checks all parameters and zero
+sets in \texttt{certificates.json}. These finite checks enumerate residue
+classes rather than sample indices.
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{cccl}
+\toprule
+Progression & $q$ & $L$ & $\{r:0\leq r<L,\ R_{q,s,t}(r)=0\}$\\
+\midrule
+$20n+16$ &101&1&$\{0\}$\\
+$220n+8$ &47&1&$\{0\}$\\
+$72n+32$ &47&55&$\{18\}$\\
+           &101&5&$\{2\}$\\
+           &149&1&$\{0\}$\\
+$168n+43$ &47&55&$\{26\}$\\
+            &59&1&$\{0\}$\\
+\bottomrule
+\end{tabular}
+\caption{All nonempty zero sets in the modular tables.}\label{tab:zeros}
+\end{table}
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+Every $G_m$ is odd, so 2 is never a prime divisor.
+For the first progression, the table excludes every odd prime less than 101
+and proves divisibility by 101. Thus its least prime divisor is 101.
+The identical argument with target 47 proves~\eqref{eq:c2}.
+
+In the third progression, 149 always divides $G_{72n+32}$.
+Among primes below 149, only 47 and 101 can divide it.
+The former divides precisely when $n\equiv18\pmod{55}$, and the latter
+precisely when $n\equiv2\pmod5$. Their classes are disjoint, so the least
+prime divisor is 47, 101 or 149 exactly as in~\eqref{eq:c3}.
+For the fourth progression, 59 always divides $G_{168n+43}$, and the only
+possible smaller prime divisor is 47, occurring precisely when
+$n\equiv26\pmod{55}$. This proves~\eqref{eq:c4}, including its exceptional case.
+\end{proof}
+
+\section{Short consequences and the Fermat-number cross-reference}
+The earlier A227244 formulas and its cross-reference A000215 have the
+following elementary consequences. The first lower bound and the forward
+implication in~\eqref{eq:eleven} reprove Schott's and Wu's recorded
+results~\cite{oeis}; the reverse implication completes their index description.
+
+\begin{corollary}\label{cor:eleven}
+For every $m\in\N$, $a(m)\geq11$, and
+\begin{equation}\label{eq:eleven}
+ a(m)=11\quad\Longleftrightarrow\quad
+ m=0\ \text{or}\ (m\geq5\text{ and }m\equiv1\pmod4).
+\end{equation}
+\end{corollary}
+\begin{proof}
+The integers $G_m$ are odd. For $m\geq1$, both powers of 2 in their
+definition are 1 modulo 3, so $G_m\equiv1\pmod3$.
+For $m\geq2$, both are also 1 modulo 5, so $G_m\equiv1\pmod5$.
+Modulo 7 the first power is 2 or 4, hence its successor is 3 or 5;
+the second power is in $\{1,2,4\}$. None of the resulting products is
+1 modulo 7. The remaining cases are $G_0=11$ and $G_1=79$.
+This excludes every prime below 11.
+
+For $m\geq2$, the residues of $2^m$ modulo 10, in the order
+$m\equiv0,1,2,3\pmod4$, are $6,2,4,8$. Also
+$2^{2^m}\equiv6\pmod{10}$, so
+$2^{2^{2^m}}\equiv2^6\equiv9\pmod{11}$.
+Consequently the residues of $G_m$ modulo 11 are $1,0,9,2$ in that order.
+Together with $G_0=11$ and $G_1=79$, this proves~\eqref{eq:eleven}.
+\end{proof}
+
+Put $F_j=2^{2^j}+1$, as in A000215~\cite{fermat}.
+Schott's identity $G_m=F_m2^{F_m-1}-1$ is recorded in A227244, COMMENTS
+(23 October 2019). Its relation to earlier Fermat numbers is also exact.
+\begin{corollary}\label{cor:coprime}
+For $0\leq j<m$, $G_m\equiv1\pmod{F_j}$, whereas
+$G_m\equiv-1\pmod{F_m}$. In particular,
+$\gcd(G_m,\prod_{j=0}^mF_j)=1$.
+\end{corollary}
+\begin{proof}
+Since $2^{2^j}\equiv-1\pmod{F_j}$, powers of 2 modulo $F_j$ have
+period dividing $2^{j+1}$. For $j<m$, both exponents $2^m$ and
+$2^{2^m}$ are divisible by $2^{j+1}$. Thus the two powers in $G_m$
+are 1 modulo $F_j$. The congruence modulo $F_m$ follows from its
+factorization $G_m=F_m2^{F_m-1}-1$.
+\end{proof}
+
+Fried~\cite{fried} proves Layman's binary-to-quaternary formula and the
+Fermat-number direction of Hasler's conjecture, and gives $F_5$ as a
+counterexample to Cloitre's proposed primality criterion. The next corollary
+reproves the first two statements and strengthens the description of the third.
+Here $T(\sum b_i2^i)=\sum b_i4^i$ for binary digits $b_i$, and $\varphi$
+is Euler's totient function, with $\varphi(1)=1$.
+\begin{corollary}\label{cor:fermat}
+For $j\in\N$, $T(F_j)=F_{j+1}$. For $j\geq2$,
+$(F_j-1)^4-1$ divides $2^{F_j-1}-1$. Moreover,
+\begin{equation}\label{eq:totient}
+ \varphi(F_j-2)=(F_j-1)/2\quad\Longleftrightarrow\quad 0\leq j\leq5.
+\end{equation}
+In general this totient equality holds exactly when all $F_i$ with $i<j$
+are prime. The implication from primality to this equality for every $j$
+is therefore equivalent to the assertion that no Fermat prime has index
+$j\geq6$.
+\end{corollary}
+\begin{proof}
+The binary nonzero positions of $F_j$ are $2^j$ and 0, so
+$T(F_j)=4^{2^j}+1=F_{j+1}$.
+For $j\geq2$, $j+2\leq2^j$, and hence
+$2^{j+2}\mid2^{2^j}$. The geometric-sum identity
+$2^u-1\mid2^v-1$ when $u\mid v$ gives the stated divisibility.
+
+Successive differences of squares give
+$F_j-2=\prod_{i<j}F_i$ (including the empty product for $j=0$).
+Also $F_k\equiv2\pmod{F_i}$ for $i<k$, so these odd numbers are
+pairwise coprime. Multiplicativity of $\varphi$ therefore yields
+\[
+ \varphi(F_j-2)=\prod_{i<j}\varphi(F_i)
+ \leq\prod_{i<j}(F_i-1)=2^{2^j-1}=(F_j-1)/2.
+\]
+Each factor is positive, and $\varphi(N)=N-1$ for $N>1$ exactly when
+$N$ is prime. Equality holds precisely when every earlier $F_i$ is prime.
+The numbers $3,5,17,257,65537$ are prime by trial division, whereas
+$F_5=641\cdot6700417$ is composite. This proves~\eqref{eq:totient}
+and the final equivalence.
+\end{proof}
+
+\section{Coverage and verification scope}
+The source statements have the following coverage; extra consequences are
+identified separately from what the sources assert.
+\begin{center}
+\begin{tabular}{>{\raggedright\arraybackslash}p{35mm}>{\raggedright\arraybackslash}p{104mm}}
+\toprule
+Source item & Mathematical coverage\\
+\midrule
+Conjectures 1 and 2 & Proved by~\eqref{eq:c1}--\eqref{eq:c2}.\\
+Conjecture 3 & Proved with progression noncoverage; its excluded classes
+are determined in~\eqref{eq:c3}.\\
+Conjecture 4 & Proved and extended to its excluded class in~\eqref{eq:c4}.\\
+Earlier FORMULA block & Reproved; prior proofs Schott (2019), Wu (2026).
+Corollary~\ref{cor:eleven} also gives the converse, not posed in the source.\\
+COMMENTS, upper bound & Prior proof Wu (2026); equation~\eqref{eq:c1}
+strengthens the bound to equality.\\
+COMMENTS, individual terms & $a(16)=a(36)=101$, $a(32)=149$ and $a(43)=59$
+follow from Theorem~\ref{thm:main}; the other large terms and historical
+primality claims are not covered.\\
+A000215, Layman & Reproved; prior proof Fried (2025), first paragraph.\\
+A000215, Hasler & Fermat-number implication reproved; prior proof Fried
+(2025), Theorem 1. Converse not covered.\\
+A000215, Cloitre & Refuted-and-corrected: Fried (2025), last paragraph,
+gives the composite $F_5$; Corollary~\ref{cor:fermat} gives the exact
+replacement criterion~\eqref{eq:totient}.\\
+A000215, other conjectures & The five-Fermat-prime assertion and
+Wesolowski's least-factor bound are not covered.\\
+Additional consequences & Corollary~\ref{cor:coprime} and the full totient
+criterion are not posed in the sources; proved here as written consequences.\\
+\bottomrule
+\end{tabular}
+\end{center}
+The COMMENTS also give Wu's proof of $a(20n+16)\leq101$; equation~\eqref{eq:c1}
+adds the matching lower bound.
+
+The written proof consists of the periodicity lemma, the interpretation of
+the two noncoverage conditions, and the deduction of least-prime-factor values
+from the finite zero sets. The finite computations establish the modular
+premises and all the zero sets in Tables~\ref{tab:zeros} and~\ref{tab:parameters}.
+The following pinned Lean declarations express the corresponding prime,
+divisibility and lower-bound statements at source revision
+\texttt{ec1e94b3ab1ae33ea4f94d5484df26d748e2175e}:
+\begin{itemize}
+\item \href{https://github.com/the-omega-institute/trureturing/blob/ec1e94b3ab1ae33ea4f94d5484df26d748e2175e/D5/S3/Arith/Congruence/WuA227244C1Equality.lean}{\texttt{WuA227244C1Equality.result}}:
+101 is prime, divides $G_{20n+16}$, and is no larger than any prime divisor.
+\item \href{https://github.com/the-omega-institute/trureturing/blob/ec1e94b3ab1ae33ea4f94d5484df26d748e2175e/D5/S3/Arith/Congruence/WuA227244C2Equality.lean}{\texttt{WuA227244C2Equality.result}}:
+the analogous three assertions for 47 on $220n+8$.
+\item \href{https://github.com/the-omega-institute/trureturing/blob/ec1e94b3ab1ae33ea4f94d5484df26d748e2175e/D5/S3/Arith/Primes/WuA227244ConjectureThree.lean}{\texttt{WuA227244ConjectureThree.result}}:
+the analogous assertions for 149 on $72n+32$, assuming both progression
+noncoverage conditions.
+\item \href{https://github.com/the-omega-institute/trureturing/blob/ec1e94b3ab1ae33ea4f94d5484df26d748e2175e/D5/S3/Arith/Primes/WuA227244ConjectureFour.lean}{\texttt{WuA227244ConjectureFour.result}}:
+the analogous assertions for 59 on $168n+43$, assuming $n\bmod55\ne26$.
+\end{itemize}
+The exceptional-class equalities in~\eqref{eq:c3}--\eqref{eq:c4} are consequences
+of the written argument and finite tables; the four declarations above have
+the stated, narrower scopes. Corollaries~\ref{cor:eleven}--\ref{cor:fermat}
+are written proofs; the accompanying checker also verifies their finite
+residue tables, the five small primes and the factorization of $F_5$.
+
+\begin{thebibliography}{9}
+\bibitem{oeis}
+The OEIS Foundation Inc., \emph{A227244: Smallest prime factor of
+$(2^{2^n}+1)2^{2^{2^n}}-1$}, revision 54, 12 July 2026.
+FORMULA, Chai Wah Wu, 10 July 2026; COMMENTS, Bernard Schott, 23 October 2019,
+and Chai Wah Wu, 10 July 2026.
+\url{https://oeis.org/A227244}.
+\bibitem{fermat}
+The OEIS Foundation Inc., \emph{A000215: Fermat numbers},
+revision 344, 23 August 2026.
+\url{https://oeis.org/A000215}. Accessed 13 November 2026.
+\bibitem{fried}
+Sela Fried, \emph{On several conjectures stated in A000215}, 2025,
+pp.~1--2; linked from A000215, COMMENTS (31 October 2025).
+\url{https://oeis.org/A000215/a000215_1.pdf}.
+\end{thebibliography}
+\noindent\small Copyright \copyright\ 2026 Haobo Ma and Wenlin Zhang.
+Licensed under Creative Commons Attribution 4.0 International (CC BY 4.0),
+\url{https://creativecommons.org/licenses/by/4.0/}.
+
+\clearpage
+\appendix
+\section{Parameters for the finite modular proof}
+\begin{table}[ht]
+\centering
+\input{residue-table.tex}
+\caption{Parameters in Lemma~\ref{lem:reduction}, with $d=q-1$.
+Column $j$ uses $(s_j,t_j)$ specified in the text. A dash denotes a prime
+above the target for that column. The zero sets are in Table~\ref{tab:zeros}.}
+\label{tab:parameters}
+\end{table}
+\end{document}

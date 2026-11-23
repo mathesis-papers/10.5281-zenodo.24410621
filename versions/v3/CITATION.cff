@@ -1,0 +1,11 @@
+cff-version: 1.2.0
+message: "If you use this work, cite it."
+title: "Exact least prime factors and exceptional classes for Wu's conjectures on (2^{2^n}+1)2^{2^{2^n}}-1"
+authors:
+  - name: "Haobo Ma"
+  - name: "Wenlin Zhang"
+date-released: "2026-11-23"
+version: "3"
+url: "https://mathesis-omega-research.apps.chrono-ai.fun/papers/wu-a227244-progressions?version=3"
+doi: "10.5281/zenodo.24410622"
+license: "CC-BY-4.0"
