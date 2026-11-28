@@ -31,6 +31,7 @@
     "concept_doi": "10.5281/zenodo.24410621",
     "current_version": 3,
     "doi": "10.5281/zenodo.24410622",
+    "kind": "note",
     "lean_source": {
       "revision": "ec1e94b3ab1ae33ea4f94d5484df26d748e2175e",
       "url": "https://github.com/the-omega-institute/trureturing/blob/ec1e94b3ab1ae33ea4f94d5484df26d748e2175e/D5/S3/Arith/Primes/WuA227244ConjectureThree.lean"
@@ -55,10 +56,12 @@
     "title": "Exact least prime factors and exceptional classes for Wu's conjectures on (2^{2^n}+1)2^{2^{2^n}}-1",
     "versions": [
       {
+        "changelog": null,
         "previous_version": null,
         "published_on": "2026-11-23T05:38:11.493333296Z",
         "revision": "3",
-        "version": 3
+        "version": 3,
+        "version_label": null
       }
     ],
     "work": "wu-a227244-progressions"
